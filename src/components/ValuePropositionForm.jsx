@@ -5,16 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 
-interface FormData {
-  targetAudience: string;
-  solutions: string;
-  uniqueSellingPoints: string;
-  benefits: string;
-}
-
 const ValuePropositionForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     targetAudience: "",
     solutions: "",
     uniqueSellingPoints: "",
@@ -22,9 +15,7 @@ const ValuePropositionForm = () => {
   });
   const [generatedProposition, setGeneratedProposition] = useState("");
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -109,8 +100,6 @@ const ValuePropositionForm = () => {
             />
           </div>
         );
-      default:
-        return null;
     }
   };
 
